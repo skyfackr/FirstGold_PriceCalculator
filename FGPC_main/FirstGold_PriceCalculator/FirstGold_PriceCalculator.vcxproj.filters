@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\mainsettingcenter">
-      <UniqueIdentifier>{945b71e7-246c-4516-8309-6753179ba037}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\mainsettingcenter">
-      <UniqueIdentifier>{fec890d5-2401-459d-8218-60cb915d3d6a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,10 +21,16 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="settings.h">
-      <Filter>头文件\mainsettingcenter</Filter>
-    </ClInclude>
     <ClInclude Include="jsoncpp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="debugcenter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="versions.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -42,6 +42,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="jsoncpp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="settings.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
