@@ -153,6 +153,7 @@
     <ClInclude Include="jsoncpp.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="settings.h" />
+    <ClInclude Include="settingtest.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="versions.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="FirstGold_PriceCalculator.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="settings.cpp" />
+    <ClCompile Include="settingtest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

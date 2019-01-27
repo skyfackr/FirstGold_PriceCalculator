@@ -42,6 +42,9 @@
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="settingtest.h">
+      <Filter>头文件\mainsettingcenter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +57,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="settings.cpp">
+      <Filter>源文件\mainsettingcenter</Filter>
+    </ClCompile>
+    <ClCompile Include="settingtest.cpp">
       <Filter>源文件\mainsettingcenter</Filter>
     </ClCompile>
   </ItemGroup>
