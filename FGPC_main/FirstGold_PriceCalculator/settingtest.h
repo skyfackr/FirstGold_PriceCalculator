@@ -9,8 +9,8 @@ namespace fgpc
 	class MainSettingTest
 	{
 	public:
-		std::string what();//读取错误原因，默认nothing
-		bool test(Json::Value data);//启动测试
+		std::string what() const;//读取错误原因，默认nothing
+		bool teststart(Json::Value &data);//启动测试
 	};
 }
 #endif // !SKYFACKR_FGPC_SETTINGTEST_H_

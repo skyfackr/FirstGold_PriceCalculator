@@ -40,7 +40,7 @@ private:
 			return false;
 		}
 		char tem_name[L_tmpnam] = {'\0'};//临时文件名称
-		tmpnam(tem_name);
+		tmpnam_s(tem_name);
 		ofstream tem_fout;//将配置列表输出到临时文件
 		tem_fout.open(tem_name, ios::out | ios::trunc);
 		if (!tem_fout)
@@ -66,5 +66,31 @@ private:
 		tem_fin.close();
 		remove(tem_name);
 		return true;
+	}
+	bool test()//测试部分
+	{
+		string ts ;//当前测试项目
+		while (!needed.empty())
+		{
+			ts = needed.front();
+			needed.pop();
+			if (!testdata.isMember(ts))
+			{
+				lasterror = "cannotfind:" + ts;
+				return false;
+			}
+		}
+		return true;
+	}
+public:
+	string what() const
+	{
+		return lasterror;
+	}
+	bool teststart(Value &data)
+	{
+		testdata = data;
+		if (!load()) return false;
+		return test();
 	}
 };
