@@ -26,10 +26,16 @@ namespace fgpc
 		bool freefile();
 
 		//修改主配置
-		bool changer(std::string name,std::string what);
+		bool change(std::string name,std::string what);
 
 		//重载至load函数
 		std::string operator[](std::string settingname) ;
+
+		//配置保存
+		bool save();
+
+		//直接从资源加载默认配置
+		bool readinitsetting();
 
 		MainSetting();
 		~MainSetting();

@@ -13,6 +13,7 @@ private:
 	Value setdata;
 	//可用标记
 	bool is_ok = false;
+	bool is_save = true;//记录当前版本是否保存
 	//记录错误，没错误返回nothing
 	class Errors
 	{
@@ -91,9 +92,10 @@ private:
 		errors.throwerr("isn't_ready");
 		return;
 	}
-#define oktest() if (!is_ok){isntok_err();return false;}
+
+#define oktest() if (!is_ok){isntok_err();return false;}//检查当前配置库是否可用，不可用将直接修改error数据并返回false
 public:
-	bool changer(string name,string what)
+	bool change(string name,string what)
 	{
 		oktest();
 		if (!setdata.isMember(name))
@@ -102,6 +104,7 @@ public:
 			return false;
 		}
 		setdata[name] = what;
+		is_save = false;
 		return true;
 	}
 	bool filetest(string filename)
@@ -162,5 +165,11 @@ public:
 	string operator[](string settingname) 
 	{
 		return load(settingname);
+	}
+	bool save()
+	{
+		oktest();
+		if (is_save) return true;
+
 	}
 };
