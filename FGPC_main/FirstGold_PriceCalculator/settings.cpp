@@ -2,6 +2,7 @@
 #include"jsoncpp.h"
 #include"settings.h"
 #include"versions.h"
+#include"settingtest.h"
 using namespace std;
 using namespace Json;
 using namespace fgpc;
@@ -55,7 +56,7 @@ private:
 	{
 		unique_ptr<ifstream> in;//读取文件
 		CharReaderBuilder jsrb;
-		unique_ptr<CharReader> jsread(jsrb.newCharReader);//解析json
+		unique_ptr<CharReader> jsread(jsrb.newCharReader());//解析json
 		in->open(name, ios::in);
 		if (!in)
 		{
@@ -73,6 +74,93 @@ private:
 	}
 	inline bool test()//测试文件是否合法
 	{
-
+		MainSettingTest settest;
+		if (!settest.teststart(setdata))
+		{
+			errors.throwerr(settest.what(), "mainsettingtest");
+			return false;
+		}
+		return true;
+	}
+	inline string get(string getname)//获得单个配置
+	{
+		return setdata[getname].asString();
+	}
+	inline void isntok_err()//如果当前主配置不可用则调用此函数
+	{
+		errors.throwerr("isn't_ready");
+		return;
+	}
+#define oktest() if (!is_ok){isntok_err();return false;}
+public:
+	bool changer(string name,string what)
+	{
+		oktest();
+		if (!setdata.isMember(name))
+		{
+			errors.throwerr("namenotfound", "changer");
+			return false;
+		}
+		setdata[name] = what;
+		return true;
+	}
+	bool filetest(string filename)
+	{
+		name = filename;
+		bool ans = true;
+		if ((!read()) || (!test())) ans = false;
+		name.clear();
+		setdata.clear();
+		return ans;
+	}
+	bool freefile()
+	{
+		oktest();
+		is_ok = false;
+		name.clear();
+		setdata.clear();
+		return true;
+	}
+	string getlasterr()
+	{
+		return errors.what();
+	}
+	MainSetting()
+	{
+		name.clear();
+		setdata.clear();
+	}
+	~MainSetting()
+	{
+		name.clear();
+		setdata.clear();
+		is_ok = false;
+	}
+	string load(string settingname)
+	{
+		if (!is_ok)
+		{
+			isntok_err();
+			return "null";
+		}
+		if (!setdata.isMember(settingname))
+		{
+			errors.throwerr("namenotfound", "load");
+			return "null";
+		}
+		return get(settingname);
+	}
+	bool readok()
+	{
+		return is_ok;
+	}
+	bool readfile(string filename)
+	{
+		name = filename;
+		return (read() && test());
+	}
+	string operator[](string settingname) 
+	{
+		return load(settingname);
 	}
 };

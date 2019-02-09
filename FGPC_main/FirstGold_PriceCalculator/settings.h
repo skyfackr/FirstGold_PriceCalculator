@@ -19,17 +19,17 @@ namespace fgpc
 		//返回上一个错误的代码
 		std::string getlasterr();
 
-		//读取某个配置，如果当前不可用或者没有此配置将返回空
+		//读取某个配置，如果当前不可用或者没有此配置将返回"null"
 		std::string load(std::string settingname);
 
 		//解除文件占用，删除全部配置记录，置可用状态为false
 		bool freefile();
 
-		//配置修改器
-		void changer();
+		//修改主配置
+		bool changer(std::string name,std::string what);
 
 		//重载至load函数
-		friend std::string &operator[](std::string settingname);
+		std::string operator[](std::string settingname) ;
 
 		MainSetting();
 		~MainSetting();
