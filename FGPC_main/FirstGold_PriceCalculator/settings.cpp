@@ -3,6 +3,8 @@
 #include"settings.h"
 #include"versions.h"
 #include"settingtest.h"
+#include"resource.h"
+#include<Windows.h>
 using namespace std;
 using namespace Json;
 using namespace fgpc;
@@ -135,9 +137,10 @@ public:
 	}
 	~MainSetting()
 	{
-		name.clear();
-		setdata.clear();
-		is_ok = false;
+		if (!is_save)
+		{
+			save();
+		}
 	}
 	string load(string settingname)
 	{
@@ -185,5 +188,45 @@ public:
 		jswriter->write(savedata, &savefile);
 		savefile.close();
 		return true;
+	}
+	bool readinitsetting(string savename)
+	{
+		const LPCTSTR filename = MAKEINTRESOURCE(IDR_TXT1);
+		const LPCTSTR filetype = TEXT("TXT");
+		constexpr auto where_err_name = "read_initialation";
+		HRSRC fp = FindResource(NULL, filename, filetype);
+		if (fp == NULL)
+		{
+			errors.throwerr("name_not_found", where_err_name);
+			return false;
+		}
+		DWORD fsize = SizeofResource(NULL, fp);
+		if (fsize == 0)
+		{
+			errors.throwerr("file_empty", where_err_name);
+			return false;
+		}
+		HGLOBAL fmem = LoadResource(NULL, fp);
+		if (fmem == NULL)
+		{
+			errors.throwerr("load_failed", where_err_name);
+			return false;
+		}
+		LPVOID fmemp = LockResource(fmem);
+		if (fmemp == NULL)
+		{
+			errors.throwerr("lock_failed", where_err_name);
+			return false;
+		}
+		ofstream saver;
+		saver.open(savename, ios::out | ios::trunc);
+		if (!saver)
+		{
+			errors.throwerr("file_create_failed", where_err_name);
+			return false;
+		}
+		saver.write((char*)fmem, fsize);
+		saver.close();
+		return readfile(savename);
 	}
 };

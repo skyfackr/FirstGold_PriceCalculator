@@ -1,0 +1,8 @@
+{
+	"username"="users"
+	"language"="Simplified Chinese"
+	"bgcolor"="black"
+	"wordcolor"="white"
+	"settingversions"="0.0.1"
+	"releaseversions"="0.0.1"
+}

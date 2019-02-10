@@ -35,7 +35,7 @@ namespace fgpc
 		bool save();
 
 		//直接从资源加载默认配置
-		bool readinitsetting();
+		bool readinitsetting(std::string savename);
 
 		MainSetting();
 		~MainSetting();
