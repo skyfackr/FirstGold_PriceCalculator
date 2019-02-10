@@ -170,6 +170,20 @@ public:
 	{
 		oktest();
 		if (is_save) return true;
-
+		StreamWriterBuilder jswb;
+		unique_ptr<StreamWriter> jswriter(jswb.newStreamWriter());
+		Value savedata = setdata;
+		savedata["settingversions"] = FGPC_SETTINGS_VERSIONS;
+		savedata["releaseversions"] = FGPC_VERSIONS;
+		ofstream savefile;
+		savefile.open(name, ios::out | ios::trunc);
+		if (!savefile)
+		{
+			errors.throwerr("file_open_failed", "saver");
+			return false;
+		}
+		jswriter->write(savedata, &savefile);
+		savefile.close();
+		return true;
 	}
 };

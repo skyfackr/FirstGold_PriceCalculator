@@ -122,4 +122,9 @@ public:
 		if (!load()) return false;
 		return test();
 	}
+	MainSettingTest() {};
+	~MainSettingTest()
+	{
+		testdata.clear();
+	}
 };

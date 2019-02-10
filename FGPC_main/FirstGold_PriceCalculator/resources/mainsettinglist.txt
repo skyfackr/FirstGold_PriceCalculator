@@ -2,3 +2,5 @@ username
 language
 bgcolor
 wordcolor
+settingversions
+releaseversions

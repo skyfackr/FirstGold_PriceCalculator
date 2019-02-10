@@ -10,7 +10,8 @@ constexpr auto FGPC_DATA_VERSIONS = "0.0.1";
 constexpr auto FGPC_DATA_REQUIREMINVERSIONS = "0.0.1";
 namespace fgpc
 {
-	void cutthreeversion(const std::string &ver, int &ver1, int &ver2, int &ver3);//分离版本号
+	//分离版本号
+	void cutthreeversion(const std::string &ver, int &ver1, int &ver2, int &ver3);
 }
 
 #endif // !SKYFACKR_FGPC_VERSIONS_H_
