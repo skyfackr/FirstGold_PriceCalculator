@@ -3,6 +3,7 @@
 #include"jsoncpp.h"
 #include"resource.h"
 #include<Windows.h>
+#include"versions.h"
 using namespace fgpc;
 using namespace std;
 using namespace Json;
@@ -67,8 +68,36 @@ private:
 		remove(tem_name);
 		return true;
 	}
+	inline bool versiontest()//测试版本号
+	{
+		int ver1, ver2, ver3,reqver1,reqver2,reqver3;
+		string reqver = FGPC_SETTINGS_REQUIREMINVERSIONS;
+		string ver = testdata["settingversions"].asString();
+		cutthreeversion(ver, ver1, ver2, ver3);
+		cutthreeversion(reqver, reqver1, reqver2, reqver3);
+		if (ver1 < reqver1) return false;
+		else if (ver1 == reqver1)
+		{
+			if (ver2 < reqver2) return false;
+			else if (ver2 == reqver2)
+			{
+				if (ver3 < reqver3) return false;
+			}
+		}
+		return true;
+	}
 	bool test()//测试部分
 	{
+		if (!testdata.isMember("settingversions"))
+		{
+			lasterror = "cannotfind:settingversions";
+			return false;
+		}
+		if (!versiontest())
+		{
+			lasterror = "data_version_low";
+			return false;
+		}
 		string ts ;//当前测试项目
 		while (!needed.empty())
 		{
@@ -92,5 +121,10 @@ public:
 		testdata = data;
 		if (!load()) return false;
 		return test();
+	}
+	MainSettingTest() {};
+	~MainSettingTest()
+	{
+		testdata.clear();
 	}
 };

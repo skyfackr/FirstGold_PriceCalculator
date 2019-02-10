@@ -3,6 +3,8 @@
 #include"settings.h"
 #include"versions.h"
 #include"settingtest.h"
+#include"resource.h"
+#include<Windows.h>
 using namespace std;
 using namespace Json;
 using namespace fgpc;
@@ -13,6 +15,7 @@ private:
 	Value setdata;
 	//可用标记
 	bool is_ok = false;
+	bool is_save = true;//记录当前版本是否保存
 	//记录错误，没错误返回nothing
 	class Errors
 	{
@@ -91,9 +94,10 @@ private:
 		errors.throwerr("isn't_ready");
 		return;
 	}
-#define oktest() if (!is_ok){isntok_err();return false;}
+
+#define oktest() if (!is_ok){isntok_err();return false;}//检查当前配置库是否可用，不可用将直接修改error数据并返回false
 public:
-	bool changer(string name,string what)
+	bool change(string name,string what)
 	{
 		oktest();
 		if (!setdata.isMember(name))
@@ -102,6 +106,7 @@ public:
 			return false;
 		}
 		setdata[name] = what;
+		is_save = false;
 		return true;
 	}
 	bool filetest(string filename)
@@ -132,9 +137,10 @@ public:
 	}
 	~MainSetting()
 	{
-		name.clear();
-		setdata.clear();
-		is_ok = false;
+		if (!is_save)
+		{
+			save();
+		}
 	}
 	string load(string settingname)
 	{
@@ -162,5 +168,65 @@ public:
 	string operator[](string settingname) 
 	{
 		return load(settingname);
+	}
+	bool save()
+	{
+		oktest();
+		if (is_save) return true;
+		StreamWriterBuilder jswb;
+		unique_ptr<StreamWriter> jswriter(jswb.newStreamWriter());
+		Value savedata = setdata;
+		savedata["settingversions"] = FGPC_SETTINGS_VERSIONS;
+		savedata["releaseversions"] = FGPC_VERSIONS;
+		ofstream savefile;
+		savefile.open(name, ios::out | ios::trunc);
+		if (!savefile)
+		{
+			errors.throwerr("file_open_failed", "saver");
+			return false;
+		}
+		jswriter->write(savedata, &savefile);
+		savefile.close();
+		return true;
+	}
+	bool readinitsetting(string savename)
+	{
+		const LPCTSTR filename = MAKEINTRESOURCE(IDR_TXT1);
+		const LPCTSTR filetype = TEXT("TXT");
+		constexpr auto where_err_name = "read_initialation";
+		HRSRC fp = FindResource(NULL, filename, filetype);
+		if (fp == NULL)
+		{
+			errors.throwerr("name_not_found", where_err_name);
+			return false;
+		}
+		DWORD fsize = SizeofResource(NULL, fp);
+		if (fsize == 0)
+		{
+			errors.throwerr("file_empty", where_err_name);
+			return false;
+		}
+		HGLOBAL fmem = LoadResource(NULL, fp);
+		if (fmem == NULL)
+		{
+			errors.throwerr("load_failed", where_err_name);
+			return false;
+		}
+		LPVOID fmemp = LockResource(fmem);
+		if (fmemp == NULL)
+		{
+			errors.throwerr("lock_failed", where_err_name);
+			return false;
+		}
+		ofstream saver;
+		saver.open(savename, ios::out | ios::trunc);
+		if (!saver)
+		{
+			errors.throwerr("file_create_failed", where_err_name);
+			return false;
+		}
+		saver.write((char*)fmem, fsize);
+		saver.close();
+		return readfile(savename);
 	}
 };

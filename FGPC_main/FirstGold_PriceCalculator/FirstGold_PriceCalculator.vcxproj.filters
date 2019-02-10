@@ -62,6 +62,9 @@
     <ClCompile Include="settingtest.cpp">
       <Filter>源文件\mainsettingcenter</Filter>
     </ClCompile>
+    <ClCompile Include="versions_func.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FirstGold_PriceCalculator.rc">
@@ -70,5 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="resources\mainsettinglist.txt" />
+    <Text Include="resources\initialmainsetting.txt" />
   </ItemGroup>
 </Project>
