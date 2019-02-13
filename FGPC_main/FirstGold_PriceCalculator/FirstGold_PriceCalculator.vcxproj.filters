@@ -19,6 +19,12 @@
     <Filter Include="源文件\mainsettingcenter">
       <UniqueIdentifier>{d1f2689e-397f-4a6a-8570-25c49069c462}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\languagecenter">
+      <UniqueIdentifier>{c9b00aea-02ed-4425-9d86-d15f6cfbdcb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\languagecenter">
+      <UniqueIdentifier>{5125108e-3bd7-4577-a6f0-5c6dbb3bddd0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -45,6 +51,18 @@
     <ClInclude Include="settingtest.h">
       <Filter>头文件\mainsettingcenter</Filter>
     </ClInclude>
+    <ClInclude Include="language.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_database.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_test.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_resources.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -64,6 +82,15 @@
     </ClCompile>
     <ClCompile Include="versions_func.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="languagecenter.cpp">
+      <Filter>源文件\languagecenter</Filter>
+    </ClCompile>
+    <ClCompile Include="languagecenter_database.cpp">
+      <Filter>源文件\languagecenter</Filter>
+    </ClCompile>
+    <ClCompile Include="languagecenter_test.cpp">
+      <Filter>源文件\languagecenter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

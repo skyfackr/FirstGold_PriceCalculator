@@ -151,6 +151,10 @@
   <ItemGroup>
     <ClInclude Include="debugcenter.h" />
     <ClInclude Include="jsoncpp.h" />
+    <ClInclude Include="language.h" />
+    <ClInclude Include="language_database.h" />
+    <ClInclude Include="language_resources.h" />
+    <ClInclude Include="language_test.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="settingtest.h" />
@@ -161,6 +165,9 @@
   <ItemGroup>
     <ClCompile Include="FirstGold_PriceCalculator.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
+    <ClCompile Include="languagecenter.cpp" />
+    <ClCompile Include="languagecenter_database.cpp" />
+    <ClCompile Include="languagecenter_test.cpp" />
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="settingtest.cpp" />
     <ClCompile Include="stdafx.cpp">
