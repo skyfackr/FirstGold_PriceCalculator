@@ -91,6 +91,14 @@ namespace fgpc
 		FGPC_Versiontool();
 		~FGPC_Versiontool();
 	};
+	namespace err
+	{
+		class FGPC_Versiontool_Unknown_version_data:exception
+		{
+		public:
+			exception(FGPC_Versiontool_Unknown_version_data) {};
+		};
+	}
 }
 
 #endif // !SKYFACKR_FGPC_VERSIONS_H_
