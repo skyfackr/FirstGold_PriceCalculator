@@ -54,9 +54,6 @@
     <ClInclude Include="language.h">
       <Filter>头文件\languagecenter</Filter>
     </ClInclude>
-    <ClInclude Include="language_database.h">
-      <Filter>头文件\languagecenter</Filter>
-    </ClInclude>
     <ClInclude Include="language_test.h">
       <Filter>头文件\languagecenter</Filter>
     </ClInclude>
@@ -86,9 +83,6 @@
     <ClCompile Include="languagecenter.cpp">
       <Filter>源文件\languagecenter</Filter>
     </ClCompile>
-    <ClCompile Include="languagecenter_database.cpp">
-      <Filter>源文件\languagecenter</Filter>
-    </ClCompile>
     <ClCompile Include="languagecenter_test.cpp">
       <Filter>源文件\languagecenter</Filter>
     </ClCompile>
@@ -99,7 +93,11 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="resources\mainsettinglist.txt" />
-    <Text Include="resources\initialmainsetting.txt" />
+    <Text Include="resources\initialmainsetting.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="resources\mainsettinglist.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>
