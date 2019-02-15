@@ -23,6 +23,10 @@ constexpr auto FGPC_DEFAULT_DATATREE = "FGPC_data";
 
 //默认主配置存档名
 #define FGPC_DEFAULT_SETTING_FILENAME FGPC_DEFAULT_DATATREE+"/mainsettings.fgpc"
+
+//最低需要的语言库版本
+constexpr auto FGPC_LANGUAGE_DATA_REQUIREMINVERSIONS = "0.0.1";
+
 namespace fgpc
 {
 	//分离版本号

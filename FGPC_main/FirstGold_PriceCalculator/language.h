@@ -1,6 +1,6 @@
 #pragma once
-/*本文件声明语言中心的外部框架接口*/
 #ifndef SKYFACKR_FGPC_LANGUAGE_H_
+/*本文件声明语言中心的外部框架接口*/
 #define SKYFACKR_FGPC_LANGUAGE_H_
 
 #include"stdafx.h"
@@ -8,8 +8,8 @@ namespace fgpc
 {
 	class LanguageCenter//语言中心
 	{
-	public:
 		typedef std::string string;
+	public:
 		
 		//输出上一个错误，没有就输出"nothing"
 		string error();

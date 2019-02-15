@@ -1,6 +1,6 @@
 #pragma once
-/*本文件声明语言中心的测试系统的接口*/
 #ifndef SKYFACKR_FGPC_LANGUAGE_TEST_H_
+/*本文件声明语言中心的测试系统的接口*/
 #define SKYFACKR_FGPC_LANGUAGE_TEST_H_
 
 #include"stdafx.h"
@@ -11,7 +11,7 @@ namespace fgpc
 	{
 		typedef std::string string;
 		typedef Json::Value Value;
-
+	public:
 		//输出错误，没有就输出"nothing"
 		string error();
 
