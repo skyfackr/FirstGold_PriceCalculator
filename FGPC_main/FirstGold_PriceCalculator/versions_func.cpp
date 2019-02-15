@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "versions.h"
-void fgpc::cutthreeversion(const std::string & ver, int & ver1, int & ver2, int & ver3)
+/*本文件用于定义各种关于元数据的快速处理工具*/
+using namespace std;
+using namespace fgpc;
+void cutthreeversion(const std::string & ver, int & ver1, int & ver2, int & ver3)
 {
 	using namespace std;
 	int point1 = 0, point2 = 0;
