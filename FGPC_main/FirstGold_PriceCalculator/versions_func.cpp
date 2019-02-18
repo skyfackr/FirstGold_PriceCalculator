@@ -35,6 +35,16 @@ void cutthreeversion(const std::string & ver, int & ver1, int & ver2, int & ver3
 	}
 	return;//此处为正常跳出
 fail://异常跳出执行此处
-	ver1 = 0; ver2 = 0; ver3 = 0;
+	ver1 = -1; ver2 = -1; ver3 = -1;
 	return;
 }
+class FGPC_Versiontool
+{
+private:
+	int ver1, ver2, ver3;//分版本号
+	string ver;//版本号字符串形式
+	bool get(string s)//获取数据
+	{
+
+	}
+};

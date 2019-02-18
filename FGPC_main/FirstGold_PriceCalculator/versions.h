@@ -64,11 +64,14 @@ namespace fgpc
 		//大于等于号比较
 		friend bool operator>=(FGPC_Versiontool a, FGPC_Versiontool b);
 
-		//从字符串获取数据（返回值表示是否成功）
-		bool operator=(string data);
+		//从字符串获取数据
+		void operator=(string data);
 
-		//从其他版本号控制中心获取数据（返回值表示是否成功）
-		bool operator=(FGPC_Versiontool data);
+		//从其他版本号控制中心获取数据
+		void operator=(FGPC_Versiontool data);
+
+		//输出为字符串
+		string asString();
 
 		//获取ver1值
 		int get_ver1();
