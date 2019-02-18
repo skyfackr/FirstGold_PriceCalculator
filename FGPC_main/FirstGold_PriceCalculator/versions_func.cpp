@@ -51,11 +51,11 @@ private:
 		return;
 	}
 public:
-	void operator=(string &data)
+	/*void operator=(string &data)
 	{
 		get(data);
 		return;
-	}
+	}*/
 	void operator=(FGPC_Versiontool &data)
 	{
 		ver1 = data.ver1;
@@ -97,6 +97,10 @@ public:
 
 	FGPC_Versiontool(){}
 	~FGPC_Versiontool(){}
+	FGPC_Versiontool(string data)
+	{
+		get(data);
+	}
 };
 bool fgpc::operator==(FGPC_Versiontool & a, FGPC_Versiontool & b)
 {

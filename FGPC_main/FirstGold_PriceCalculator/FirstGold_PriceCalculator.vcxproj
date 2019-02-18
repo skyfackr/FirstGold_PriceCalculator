@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="resources\initialmainsetting.txt" />
+    <Text Include="resources\langguagename.txt" />
     <Text Include="resources\mainsettinglist.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

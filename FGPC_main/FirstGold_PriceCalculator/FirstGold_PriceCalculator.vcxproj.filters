@@ -25,6 +25,12 @@
     <Filter Include="源文件\languagecenter">
       <UniqueIdentifier>{5125108e-3bd7-4577-a6f0-5c6dbb3bddd0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\mainsettingcenter">
+      <UniqueIdentifier>{0c23832f-b235-4723-9c88-d56a1fcdd013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\languagecenter">
+      <UniqueIdentifier>{ef91b3e8-46f1-4849-8623-5ef8dc1014a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -93,11 +99,14 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="resources\initialmainsetting.txt">
-      <Filter>资源文件</Filter>
-    </Text>
     <Text Include="resources\mainsettinglist.txt">
-      <Filter>资源文件</Filter>
+      <Filter>资源文件\mainsettingcenter</Filter>
+    </Text>
+    <Text Include="resources\initialmainsetting.txt">
+      <Filter>资源文件\mainsettingcenter</Filter>
+    </Text>
+    <Text Include="resources\langguagename.txt">
+      <Filter>资源文件\languagecenter</Filter>
     </Text>
   </ItemGroup>
 </Project>

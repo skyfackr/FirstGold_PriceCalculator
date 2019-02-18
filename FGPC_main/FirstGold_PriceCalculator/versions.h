@@ -22,14 +22,18 @@ constexpr auto FGPC_DATA_REQUIREMINVERSIONS = "0.0.1";
 //默认存档位置
 constexpr auto FGPC_DEFAULT_DATATREE = "FGPC_data";
 
+//默认后缀名
+constexpr auto FGPC_DEFAULT_SUFFIX_NAME = ".fgpc";
+
 //默认主配置存档名
-#define FGPC_DEFAULT_SETTING_FILENAME FGPC_DEFAULT_DATATREE+"/mainsettings.fgpc"
+#define FGPC_DEFAULT_SETTING_FILENAME FGPC_DEFAULT_DATATREE + "/mainsettings" + FGPC_DEFAULT_SUFFIX_NAME
 
 //最低需要的语言库版本
 constexpr auto FGPC_LANGUAGE_DATA_REQUIREMINVERSIONS = "0.0.1";
 
 #include"stdafx.h"
 using std::exception;
+using std::string;
 namespace fgpc
 {
 	
@@ -48,7 +52,7 @@ namespace fgpc
 
 
 
-		typedef std::string string;
+		
 	public:
 
 		//小于号比较
@@ -66,8 +70,8 @@ namespace fgpc
 		//大于等于号比较
 		friend bool operator>=(FGPC_Versiontool &a, FGPC_Versiontool &b);
 
-		//从字符串获取数据
-		void operator=(string &data);
+		
+		//void operator=(string &data);
 
 		//从其他版本号控制中心获取数据
 		void operator=(FGPC_Versiontool &data);
@@ -94,6 +98,8 @@ namespace fgpc
 		void change_ver3(int &data);
 
 		FGPC_Versiontool();
+		//从字符串转换类型
+		FGPC_Versiontool(string data);
 		~FGPC_Versiontool();
 	};
 	namespace err
