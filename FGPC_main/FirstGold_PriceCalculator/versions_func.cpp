@@ -3,7 +3,7 @@
 /*本文件用于定义各种关于元数据的快速处理工具*/
 using namespace std;
 using namespace fgpc;
-void cutthreeversion(const std::string & ver, int & ver1, int & ver2, int & ver3)
+void fgpc::cutthreeversion(const std::string & ver, int & ver1, int & ver2, int & ver3)
 {
 	using namespace std;
 	int point1 = 0, point2 = 0;
@@ -41,10 +41,94 @@ fail://异常跳出执行此处
 class FGPC_Versiontool
 {
 private:
-	int ver1, ver2, ver3;//分版本号
-	string ver;//版本号字符串形式
-	bool get(string s)//获取数据
+	int ver1=0, ver2=0, ver3=0;//分版本号
+	string ver="0.0.0";//版本号字符串形式
+	void get(string &s)//获取数据
 	{
-
+		ver = s;
+		cutthreeversion(ver, ver1, ver2, ver3);
+		if (ver1 < 0) throw(err::FGPC_Versiontool_Unknown_version_data());
+		return;
 	}
+public:
+	void operator=(string &data)
+	{
+		get(data);
+		return;
+	}
+	void operator=(FGPC_Versiontool &data)
+	{
+		ver1 = data.ver1;
+		ver2 = data.ver2;
+		ver3 = data.ver3;
+		return;
+	}
+	string asString()
+	{
+		return ver;
+	}
+	int get_ver1()
+	{
+		return ver1;
+	}
+	int get_ver2()
+	{
+		return ver2;
+	}
+	int get_ver3()
+	{
+		return ver3;
+	}
+	void change_ver1(int &data)
+	{
+		ver1 = data;
+		return;
+	}
+	void change_ver2(int &data)
+	{
+		ver2 = data;
+		return;
+	}
+	void change_ver3(int &data)
+	{
+		ver3 = data;
+		return;
+	}
+
+	FGPC_Versiontool(){}
+	~FGPC_Versiontool(){}
 };
+bool fgpc::operator==(FGPC_Versiontool & a, FGPC_Versiontool & b)
+{
+	if (a.get_ver1() == b.get_ver1() || a.get_ver2() == b.get_ver2() || a.get_ver3() == b.get_ver3()) return true;
+	return false;
+}
+bool fgpc::operator<(FGPC_Versiontool & a, FGPC_Versiontool & b)
+{
+	if (a == b) return false;
+	if (a.get_ver1()>=b.get_ver1())
+	{
+		if (a.get_ver1() > b.get_ver1()) return false;
+		if (a.get_ver2() >= b.get_ver2())
+		{
+			if (a.get_ver2() > b.get_ver2()) return false;
+			if (a.get_ver3() > b.get_ver3()) return false;
+		}
+	}
+	return true;
+}
+bool fgpc::operator>(FGPC_Versiontool & a, FGPC_Versiontool & b)
+{
+	if (a == b) return false;
+	return !(a < b);
+}
+bool fgpc::operator<=(FGPC_Versiontool & a, FGPC_Versiontool & b)
+{
+	if (a == b) return true;
+	return (a < b);
+}
+bool fgpc::operator>=(FGPC_Versiontool & a, FGPC_Versiontool & b)
+{
+	if (a == b) return true;
+	return (a > b);
+}

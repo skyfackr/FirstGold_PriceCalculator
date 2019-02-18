@@ -28,6 +28,8 @@ constexpr auto FGPC_DEFAULT_DATATREE = "FGPC_data";
 //最低需要的语言库版本
 constexpr auto FGPC_LANGUAGE_DATA_REQUIREMINVERSIONS = "0.0.1";
 
+#include"stdafx.h"
+using std::exception;
 namespace fgpc
 {
 	
@@ -50,25 +52,25 @@ namespace fgpc
 	public:
 
 		//小于号比较
-		friend bool operator<(FGPC_Versiontool a, FGPC_Versiontool b);
+		friend bool operator<(FGPC_Versiontool &a, FGPC_Versiontool &b);
 
 		//大于号比较
-		friend bool operator>(FGPC_Versiontool a, FGPC_Versiontool b);
+		friend bool operator>(FGPC_Versiontool &a, FGPC_Versiontool &b);
 
 		//等于号比较
-		friend bool operator==(FGPC_Versiontool a, FGPC_Versiontool b);
+		friend bool operator==(FGPC_Versiontool &a, FGPC_Versiontool &b);
 
 		//小于等于号比较
-		friend bool operator<=(FGPC_Versiontool a, FGPC_Versiontool b);
+		friend bool operator<=(FGPC_Versiontool &a, FGPC_Versiontool &b);
 
 		//大于等于号比较
-		friend bool operator>=(FGPC_Versiontool a, FGPC_Versiontool b);
+		friend bool operator>=(FGPC_Versiontool &a, FGPC_Versiontool &b);
 
 		//从字符串获取数据
-		void operator=(string data);
+		void operator=(string &data);
 
 		//从其他版本号控制中心获取数据
-		void operator=(FGPC_Versiontool data);
+		void operator=(FGPC_Versiontool &data);
 
 		//输出为字符串
 		string asString();
@@ -83,13 +85,13 @@ namespace fgpc
 		int get_ver3();
 
 		//修改ver1值
-		bool change_ver1(int data);
+		void change_ver1(int &data);
 
 		//修改ver2值
-		bool change_ver2(int data);
+		void change_ver2(int &data);
 
 		//修改ver3值
-		bool change_ver3(int data);
+		void change_ver3(int &data);
 
 		FGPC_Versiontool();
 		~FGPC_Versiontool();
@@ -99,7 +101,7 @@ namespace fgpc
 		class FGPC_Versiontool_Unknown_version_data:exception
 		{
 		public:
-			exception(FGPC_Versiontool_Unknown_version_data) {};
+			exception(string) {};
 		};
 	}
 }
