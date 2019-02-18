@@ -51,6 +51,7 @@ private:
 		}
 		tem_fout.write((char*)fmem, fsize);
 		tem_fout.close();
+		FreeResource(fmem);
 		ifstream tem_fin;//重新读取临时文件（别问我为什么这么无聊）
 		tem_fin.open(tem_name, ios::in);
 		if (!tem_fin)
