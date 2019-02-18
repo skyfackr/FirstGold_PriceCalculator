@@ -227,6 +227,7 @@ public:
 		}
 		saver.write((char*)fmem, fsize);
 		saver.close();
+		FreeResource(fmem);
 		return readfile(savename);
 	}
 };
