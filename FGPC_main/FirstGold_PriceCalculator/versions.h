@@ -97,6 +97,9 @@ namespace fgpc
 		//修改ver3值
 		void change_ver3(int &data);
 
+		//交换
+		friend void swap(FGPC_Versiontool &a, FGPC_Versiontool &b);
+
 		FGPC_Versiontool();
 		//从字符串转换类型
 		FGPC_Versiontool(string data);

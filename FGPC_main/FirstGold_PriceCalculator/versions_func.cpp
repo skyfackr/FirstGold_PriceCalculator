@@ -61,6 +61,7 @@ public:
 		ver1 = data.ver1;
 		ver2 = data.ver2;
 		ver3 = data.ver3;
+		ver = data.ver;
 		return;
 	}
 	string asString()
@@ -135,4 +136,11 @@ bool fgpc::operator>=(FGPC_Versiontool & a, FGPC_Versiontool & b)
 {
 	if (a == b) return true;
 	return (a > b);
+}
+void fgpc::swap(FGPC_Versiontool & a, FGPC_Versiontool & b)
+{
+	FGPC_Versiontool p = a;
+	a = b;
+	b = p;
+	return;
 }
