@@ -138,7 +138,7 @@ public:
 	bool test(Value &testdata)
 	{
 		data = testdata;
-		return (test_version() || test_lang());
+		return (test_version() && test_lang());
 	}
 
 	LanguageTester(){}

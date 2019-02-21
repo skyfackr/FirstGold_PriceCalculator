@@ -40,6 +40,9 @@ namespace fgpc
 	//分离版本号
 	void cutthreeversion(const std::string &ver, int &ver1, int &ver2, int &ver3);
 	
+	//合并版本号
+	void parsethreeversion(std::string &ver, const int &ver1, const int &ver2, const int &ver3);
+
 	class FGPC_Versiontool//版本号处理中心
 	{
 		
@@ -74,7 +77,7 @@ namespace fgpc
 		//void operator=(string &data);
 
 		//从其他版本号控制中心获取数据
-		void operator=(FGPC_Versiontool &data);
+		FGPC_Versiontool &operator=(FGPC_Versiontool &data);
 
 		//输出为字符串
 		string asString();

@@ -38,15 +38,27 @@ fail://异常跳出执行此处
 	ver1 = -1; ver2 = -1; ver3 = -1;
 	return;
 }
+void fgpc::parsethreeversion(std::string & ver, const int & ver1, const int & ver2, const int & ver3)
+{
+	if (ver1 < 0 || ver2 < 0 || ver3 < 0)//不允许版本号出现负数
+	{
+		ver = "ERROR";
+		return;
+	}
+	ostringstream oss;
+	oss << ver1 << '.' << ver2 << '.' << ver3;
+	ver = oss.str();
+	return;
+}
 class FGPC_Versiontool
 {
 private:
 	int ver1=0, ver2=0, ver3=0;//分版本号
-	string ver="0.0.0";//版本号字符串形式
+	//string ver="0.0.0";//版本号字符串形式
 	void get(string &s)//获取数据
 	{
-		ver = s;
-		cutthreeversion(ver, ver1, ver2, ver3);
+		//ver = s;
+		cutthreeversion(s, ver1, ver2, ver3);
 		if (ver1 < 0) throw(err::FGPC_Versiontool_Unknown_version_data());
 		return;
 	}
@@ -56,16 +68,18 @@ public:
 		get(data);
 		return;
 	}*/
-	void operator=(FGPC_Versiontool &data)
+	FGPC_Versiontool &operator=(FGPC_Versiontool &data)
 	{
 		ver1 = data.ver1;
 		ver2 = data.ver2;
 		ver3 = data.ver3;
-		ver = data.ver;
-		return;
+		//ver = data.ver;
+		return *this;
 	}
 	string asString()
 	{
+		string ver;
+		parsethreeversion(ver, ver1, ver2, ver3);
 		return ver;
 	}
 	int get_ver1()
