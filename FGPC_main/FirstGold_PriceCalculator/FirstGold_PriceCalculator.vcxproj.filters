@@ -31,6 +31,9 @@
     <Filter Include="资源文件\languagecenter">
       <UniqueIdentifier>{ef91b3e8-46f1-4849-8623-5ef8dc1014a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\languagecenter\内核">
+      <UniqueIdentifier>{5850e313-a751-4ab4-aaa3-5598079513ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -64,6 +67,9 @@
       <Filter>头文件\languagecenter</Filter>
     </ClInclude>
     <ClInclude Include="language_resources.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_data_resources.h">
       <Filter>头文件\languagecenter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -106,6 +112,12 @@
       <Filter>资源文件\mainsettingcenter</Filter>
     </Text>
     <Text Include="resources\langguagename.txt">
+      <Filter>资源文件\languagecenter\内核</Filter>
+    </Text>
+    <Text Include="resources\language\En.txt">
+      <Filter>资源文件\languagecenter</Filter>
+    </Text>
+    <Text Include="resources\language\Zh_CN.txt">
       <Filter>资源文件\languagecenter</Filter>
     </Text>
   </ItemGroup>

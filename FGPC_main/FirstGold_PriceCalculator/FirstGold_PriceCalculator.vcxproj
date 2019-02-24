@@ -152,6 +152,7 @@
     <ClInclude Include="debugcenter.h" />
     <ClInclude Include="jsoncpp.h" />
     <ClInclude Include="language.h" />
+    <ClInclude Include="language_data_resources.h" />
     <ClInclude Include="language_resources.h" />
     <ClInclude Include="language_test.h" />
     <ClInclude Include="resource.h" />
@@ -182,6 +183,8 @@
   <ItemGroup>
     <Text Include="resources\initialmainsetting.txt" />
     <Text Include="resources\langguagename.txt" />
+    <Text Include="resources\language\En.txt" />
+    <Text Include="resources\language\Zh_CN.txt" />
     <Text Include="resources\mainsettinglist.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
