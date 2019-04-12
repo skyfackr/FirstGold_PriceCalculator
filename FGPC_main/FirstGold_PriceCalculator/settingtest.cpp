@@ -62,7 +62,7 @@ private:
 		while (!tem_fin.eof())
 		{
 			string s;
-			tem_fin >> s;
+			getline(tem_fin, s);
 			needed.push(s);
 		}
 		tem_fin.close();

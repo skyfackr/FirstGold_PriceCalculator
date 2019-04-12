@@ -19,6 +19,21 @@
     <Filter Include="源文件\mainsettingcenter">
       <UniqueIdentifier>{d1f2689e-397f-4a6a-8570-25c49069c462}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\languagecenter">
+      <UniqueIdentifier>{c9b00aea-02ed-4425-9d86-d15f6cfbdcb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\languagecenter">
+      <UniqueIdentifier>{5125108e-3bd7-4577-a6f0-5c6dbb3bddd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\mainsettingcenter">
+      <UniqueIdentifier>{0c23832f-b235-4723-9c88-d56a1fcdd013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\languagecenter">
+      <UniqueIdentifier>{ef91b3e8-46f1-4849-8623-5ef8dc1014a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\languagecenter\内核">
+      <UniqueIdentifier>{5850e313-a751-4ab4-aaa3-5598079513ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -45,6 +60,18 @@
     <ClInclude Include="settingtest.h">
       <Filter>头文件\mainsettingcenter</Filter>
     </ClInclude>
+    <ClInclude Include="language.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_test.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_resources.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
+    <ClInclude Include="language_data_resources.h">
+      <Filter>头文件\languagecenter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -65,6 +92,12 @@
     <ClCompile Include="versions_func.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="languagecenter.cpp">
+      <Filter>源文件\languagecenter</Filter>
+    </ClCompile>
+    <ClCompile Include="languagecenter_test.cpp">
+      <Filter>源文件\languagecenter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FirstGold_PriceCalculator.rc">
@@ -72,7 +105,20 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="resources\mainsettinglist.txt" />
-    <Text Include="resources\initialmainsetting.txt" />
+    <Text Include="resources\mainsettinglist.txt">
+      <Filter>资源文件\mainsettingcenter</Filter>
+    </Text>
+    <Text Include="resources\initialmainsetting.txt">
+      <Filter>资源文件\mainsettingcenter</Filter>
+    </Text>
+    <Text Include="resources\langguagename.txt">
+      <Filter>资源文件\languagecenter\内核</Filter>
+    </Text>
+    <Text Include="resources\language\En.txt">
+      <Filter>资源文件\languagecenter</Filter>
+    </Text>
+    <Text Include="resources\language\Zh_CN.txt">
+      <Filter>资源文件\languagecenter</Filter>
+    </Text>
   </ItemGroup>
 </Project>
